@@ -5,16 +5,21 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "tsx watch src/index.ts",
-    "start": "node build/index.js"
+    "dev": "tsx watch src/app.ts",
+    "start": "node build/app.js"
   },
   "keywords": [],
   "type": "module",
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/node": "^26.2.0",
     "typescript": "^7.0.2"
   },
   "dependencies": {
+    "@types/pg": "^8.21.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.23.0",
     "tsx": "^4.23.12"
   }
 }

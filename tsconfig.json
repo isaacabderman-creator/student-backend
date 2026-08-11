@@ -3,6 +3,7 @@
     "rootDir": "./src",
     "outDir": "./build",
     "module": "nodenext",
+    "moduleResolution": "nodenext",
     "target": "esnext",
     "types": [
       "node"
@@ -10,6 +11,8 @@
     "lib": [
       "esnext"
     ],
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
     "noImplicitReturns": true,
