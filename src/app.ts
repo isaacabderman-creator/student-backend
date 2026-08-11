@@ -1,5 +1,4 @@
-import express from "express";
-import dotenv from "dotenv";
+import express, {type Express} from "express";
 
 import {
   createStudent,
@@ -9,9 +8,7 @@ import {
   updateStudent,
 } from "./controllers/students.controller.ts";
 
-dotenv.config();
-
-const app = express();
+const app: Express = express();
 
 app.use(express.json());
 

@@ -1,9 +1,7 @@
-import dotenv from "dotenv";
 import { type Student, type StudentWithoutId } from "../models/student.model.ts";
 
 import {pool} from "../config/students.config.ts";
 
-dotenv.config();
 
 export const findAll = async (): Promise<Student[]> => {
   const query = "SELECT * FROM students";
