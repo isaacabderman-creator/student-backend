@@ -1,25 +1,34 @@
-import { type Student, type StudentWithoutId } from "../models/student.model.ts";
-import * as studentRepository from "../repositories/students.repositories.ts";
+import {
+  type Student,
+  type StudentWithoutId,
+} from "../models/student.model.ts";
+import { StudentRepository } from "../repositories/students.repositories.ts";
 
-export const getAllStudents = async (): Promise<Student[]> => {
-  return studentRepository.findAll();
-};
+export class StudentService {
+  private readonly studentRepository: StudentRepository;
+  constructor() {
+    this.studentRepository = new StudentRepository();
+  }
+  getAllStudents = async (): Promise<Student[]> => {
+    return this.studentRepository.findAll();
+  };
 
-export const getStudentById = async (id: number): Promise<Student | null> => {
-  return studentRepository.findById(id);
-};
+  getStudentById = async (id: number): Promise<Student | null> => {
+    return this.studentRepository.findById(id);
+  };
 
-export const createStudent = async (student: StudentWithoutId): Promise<Student> => {
-  return studentRepository.create(student);
-};
+  createStudent = async (student: StudentWithoutId): Promise<Student> => {
+    return this.studentRepository.create(student);
+  };
 
-export const updateStudent = async (
-  id: number,
-  student: StudentWithoutId,
-): Promise<Student | null> => {
-  return studentRepository.update(id, student);
-};
+  updateStudent = async (
+    id: number,
+    student: StudentWithoutId,
+  ): Promise<Student | null> => {
+    return this.studentRepository.update(id, student);
+  };
 
-export const deleteStudent = async (id: number): Promise<boolean> => {
-  return studentRepository.remove(id);
-};
+  deleteStudent = async (id: number): Promise<boolean> => {
+    return this.studentRepository.remove(id);
+  };
+}

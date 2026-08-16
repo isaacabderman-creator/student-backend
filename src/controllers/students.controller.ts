@@ -1,7 +1,7 @@
 import { type Request, type Response } from "express";
 
 import { type StudentWithoutId } from "../models/student.model.ts";
-import * as studentService from "../services/students.service.ts";
+import  { StudentService } from "../services/students.service.ts";
 
 const parseId = (value: unknown): number | null => {
   if (typeof value !== "string") {
@@ -28,79 +28,70 @@ const validateBody = (body: unknown): StudentWithoutId | null => {
   return { name, email };
 };
 
-export const getStudents = async (
-  _req: Request,
-  res: Response,
-): Promise<void> => {
-  const students = await studentService.getAllStudents();
-  res.json(students);
-};
+export class StudentController {
+  private readonly studentService: StudentService;
+  constructor() {
+    this.studentService = new StudentService();
+  }
+  getStudents = async (_req: Request, res: Response): Promise<void> => {
+    const students = await this.studentService.getAllStudents();
+    res.json(students);
+  };
 
-export const getStudent = async (
-  req: Request,
-  res: Response,
-): Promise<void> => {
-  const id = parseId(req.params.id);
-  if (id === null) {
-    res.status(400).json({ message: "Invalid student id" });
-    return;
-  }
-  const student = await studentService.getStudentById(id);
-  if (!student) {
-    res.status(404).json({ message: `Student with id ${id} not found` });
-    return;
-  }
-  res.json(student);
-};
+  getStudent = async (req: Request, res: Response): Promise<void> => {
+    const id = parseId(req.params.id);
+    if (id === null) {
+      res.status(400).json({ message: "Invalid student id" });
+      return;
+    }
+    const student = await this.studentService.getStudentById(id);
+    if (!student) {
+      res.status(404).json({ message: `Student with id ${id} not found` });
+      return;
+    }
+    res.json(student);
+  };
 
-export const createStudent = async (
-  req: Request,
-  res: Response,
-): Promise<void> => {
-  const input = validateBody(req.body);
-  if (input === null) {
-    res.status(400).json({ message: "name and email are required" });
-    return;
-  }
-  const student = await studentService.createStudent(input);
-  res.status(201).json(student);
-};
+  createStudent = async (req: Request, res: Response): Promise<void> => {
+    const input = validateBody(req.body);
+    if (input === null) {
+      res.status(400).json({ message: "name and email are required" });
+      return;
+    }
+    const student = await this.studentService.createStudent(input);
+    res.status(201).json(student);
+  };
 
-export const updateStudent = async (
-  req: Request,
-  res: Response,
-): Promise<void> => {
-  const id = parseId(req.params.id);
-  if (id === null) {
-    res.status(400).json({ message: "Invalid student id" });
-    return;
-  }
-  const input = validateBody(req.body);
-  if (input === null) {
-    res.status(400).json({ message: "name and email are required" });
-    return;
-  }
-  const student = await studentService.updateStudent(id, input);
-  if (!student) {
-    res.status(404).json({ message: `Student with id ${id} not found` });
-    return;
-  }
-  res.json(student);
-};
+  updateStudent = async (req: Request, res: Response): Promise<void> => {
+    const id = parseId(req.params.id);
+    if (id === null) {
+      res.status(400).json({ message: "Invalid student id" });
+      return;
+    }
+    const input = validateBody(req.body);
+    if (input === null) {
+      res.status(400).json({ message: "name and email are required" });
+      return;
+    }
+    const student = await this.studentService.updateStudent(id, input);
+    if (!student) {
+      res.status(404).json({ message: `Student with id ${id} not found` });
+      return;
+    }
+    res.json(student);
+  };
 
-export const deleteStudent = async (
-  req: Request,
-  res: Response,
-): Promise<void> => {
-  const id = parseId(req.params.id);
-  if (id === null) {
-    res.status(400).json({ message: "Invalid student id" });
-    return;
-  }
-  const deleted = await studentService.deleteStudent(id);
-  if (!deleted) {
-    res.status(404).json({ message: `Student with id ${id} not found` });
-    return;
-  }
-  res.status(204).send();
-};
+  deleteStudent = async (req: Request, res: Response): Promise<void> => {
+    const id = parseId(req.params.id);
+    if (id === null) {
+      res.status(400).json({ message: "Invalid student id" });
+      return;
+    }
+    const deleted = await this.studentService.deleteStudent(id);
+    if (!deleted) {
+      res.status(404).json({ message: `Student with id ${id} not found` });
+      return;
+    }
+    res.status(204).send();
+  };
+}

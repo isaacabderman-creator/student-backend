@@ -1,22 +1,17 @@
-import express, {type Express} from "express";
+import express, { type Express } from "express";
 
-import {
-  createStudent,
-  deleteStudent,
-  getStudent,
-  getStudents,
-  updateStudent,
-} from "./controllers/students.controller.ts";
+import { StudentController } from "./controllers/students.controller.ts";
 
 const app: Express = express();
 
+const studentController = new StudentController();
 app.use(express.json());
 
-app.get("/students", getStudents);
-app.get("/students/:id", getStudent);
-app.post("/students", createStudent);
-app.put("/students/:id", updateStudent);
-app.delete("/students/:id", deleteStudent);
+app.get("/students", studentController.getStudents);
+app.get("/students/:id", studentController.getStudent);
+app.post("/students", studentController.createStudent);
+app.put("/students/:id", studentController.updateStudent);
+app.delete("/students/:id", studentController.deleteStudent);
 
 const port = Number(process.env.PORT ?? 3000);
 
