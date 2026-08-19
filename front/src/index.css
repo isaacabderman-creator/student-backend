@@ -1,0 +1,42 @@
+body {
+  font-family: sans-serif;
+  max-width: 640px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+input {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+button {
+  margin-top: 0.75rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 0.75rem;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 0.4rem;
+  text-align: left;
+}
+
+#status {
+  margin-top: 0.75rem;
+  white-space: pre-wrap;
+}
