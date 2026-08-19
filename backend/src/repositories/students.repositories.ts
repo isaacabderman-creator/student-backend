@@ -43,4 +43,3 @@ export class StudentRepository {
     return (result.rowCount ?? 0) > 0;
   };
 }
-e
