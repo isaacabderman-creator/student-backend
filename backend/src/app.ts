@@ -1,9 +1,9 @@
 import express, { type Express } from "express";
 
-import { AuthController } from "./controllers/auth.controller.ts";
-import { StudentController } from "./controllers/students.controller.ts";
-import { corsMiddleware } from "./middleware/cors.middleware.ts";
-import { requireAuth } from "./middleware/auth.middleware.ts";
+import { AuthController } from "./controllers/authController.ts";
+import { StudentController } from "./controllers/studentsController.ts";
+import { corsMiddleware } from "./middleware/corsMiddleware.ts";
+import { requireAuth } from "./middleware/authMiddleware.ts";
 
 const app: Express = express();
 

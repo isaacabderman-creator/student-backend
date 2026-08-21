@@ -1,8 +1,8 @@
 import {
   type Student,
   type StudentWithoutId,
-} from "../models/student.model.ts";
-import { StudentRepository } from "../repositories/students.repositories.ts";
+} from "../models/studentModel.ts";
+import { StudentRepository } from "../repositories/studentsRepositories.ts";
 
 export class StudentService {
   private readonly studentRepository: StudentRepository;

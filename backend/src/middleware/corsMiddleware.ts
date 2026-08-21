@@ -1,5 +1,5 @@
 import cors from "cors";
 
-import { corsOptions } from "../config/cors.config.ts";
+import { corsOptions } from "../config/corsConfig.ts";
 
 export const corsMiddleware = cors(corsOptions);

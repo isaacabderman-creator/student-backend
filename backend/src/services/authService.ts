@@ -1,9 +1,9 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-import { JWT_EXPIRES_IN, JWT_SECRET } from "../config/auth.config.ts";
-import { type UserWithoutId } from "../models/user.model.ts";
-import { UserRepository } from "../repositories/users.repositories.ts";
+import { JWT_EXPIRES_IN, JWT_SECRET } from "../config/authConfig.ts";
+import { type UserWithoutId } from "../models/userModel.ts";
+import { UserRepository } from "../repositories/usersRepositories.ts";
 
 const SALT_ROUNDS = 10;
 
