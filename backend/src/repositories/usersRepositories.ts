@@ -1,6 +1,6 @@
-import { type User, type UserWithoutId } from "../models/user.model.ts";
+import { type User, type UserWithoutId } from "../models/userModel.ts";
 
-import { pool } from "../config/students.config.ts";
+import { pool } from "../config/studentsConfig.ts";
 
 export class UserRepository {
   findByEmail = async (email: string): Promise<User | null> => {

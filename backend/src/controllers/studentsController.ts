@@ -1,7 +1,7 @@
 import { type Request, type Response } from "express";
 
-import { type StudentWithoutId } from "../models/student.model.ts";
-import  { StudentService } from "../services/students.service.ts";
+import { type StudentWithoutId } from "../models/studentModel.ts";
+import  { StudentService } from "../services/studentsService.ts";
 
 const parseId = (value: unknown): number | null => {
   if (typeof value !== "string") {

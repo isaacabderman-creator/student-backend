@@ -1,7 +1,7 @@
 import { type Request, type Response } from "express";
 
-import { type UserWithoutId } from "../models/user.model.ts";
-import { AuthService } from "../services/auth.service.ts";
+import { type UserWithoutId } from "../models/userModel.ts";
+import { AuthService } from "../services/authService.ts";
 
 const validateCredentials = (body: unknown): UserWithoutId | null => {
   if (typeof body !== "object" || body === null) {

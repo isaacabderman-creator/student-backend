@@ -1,9 +1,9 @@
 import {
   type Student,
   type StudentWithoutId,
-} from "../models/student.model.ts";
+} from "../models/studentModel.ts";
 
-import { pool } from "../config/students.config.ts";
+import { pool } from "../config/studentsConfig.ts";
 
 export class StudentRepository {
   findAll = async (): Promise<Student[]> => {

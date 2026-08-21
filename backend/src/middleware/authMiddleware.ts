@@ -1,7 +1,7 @@
 import { type NextFunction, type Request, type Response } from "express";
 import jwt from "jsonwebtoken";
 
-import { JWT_SECRET } from "../config/auth.config.ts";
+import { JWT_SECRET } from "../config/authConfig.ts";
 
 export const requireAuth = (
   req: Request,
